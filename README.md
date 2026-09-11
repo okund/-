@@ -1,0 +1,3 @@
+微信开发者工具浏览，
+需要IntelliJ IDEA启动环境，编写MsSQL数据库，已有数据库查询脚本
+需在application.yml文件配置数据库连接，以及百度智能云AI人脸识别模型配置
