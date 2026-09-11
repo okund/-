@@ -1,0 +1,51 @@
+<view class="page-container">
+  <view class="search-bar">
+    <text class="search-icon">🔍</text>
+    <input class="search-input" placeholder="搜索学生姓名或学号..." bindinput="onSearch" />
+  </view>
+
+  <view class="toolbar">
+    <view class="toolbar-left">
+      <text wx:if="{{filterLabel}}" class="filter-tip" bindtap="clearFilter">{{filterLabel}} ×</text>
+      <text class="toolbar-text">共 {{students.length}} 名学生</text>
+    </view>
+    <text class="toolbar-btn" bindtap="refresh">🔄 刷新</text>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:if="{{!loading && students.length === 0}}" class="empty">
+    <text>暂无学生数据</text>
+  </view>
+
+  <view class="student-list">
+    <view class="card student-item" wx:for="{{students}}" wx:key="id" bindtap="viewStudent" data-id="{{item.id}}" hover-class="feature-hover">
+      <view class="student-avatar">
+        <image src="/images/default_avatar.png" mode="aspectFill" class="avatar-img"></image>
+      </view>
+      <view class="student-info">
+        <view class="student-name-row">
+          <text class="student-name">{{item.name}}</text>
+          <text class="student-id">{{item.studentId}}</text>
+        </view>
+        <text class="student-class">{{item.college}} · {{item.major}} · {{item.grade}}</text>
+        <view class="student-tags">
+          <text class="tag {{item.todayCheckin === 'present' ? 'tag-success' : (item.todayCheckin === 'late' ? 'tag-warning' : 'tag-default')}}">
+            上课: {{item.todayCheckin === 'present' ? '已签到' : (item.todayCheckin === 'late' ? '迟到' : '未签到')}}
+          </text>
+          <text class="tag {{item.todayDorm === 'normal' ? 'tag-success' : (item.todayDorm === 'late' ? 'tag-warning' : 'tag-default')}}">
+            查寝: {{item.todayDorm === 'normal' ? '已打卡' : (item.todayDorm === 'late' ? '晚归' : '未打卡')}}
+          </text>
+        </view>
+      </view>
+      <view class="student-stats">
+        <text class="stats-num">{{item.classTotal}}</text>
+        <text class="stats-label">上课</text>
+        <text class="stats-num" style="margin-top: 10rpx;">{{item.dormTotal}}</text>
+        <text class="stats-label">查寝</text>
+      </view>
+    </view>
+  </view>
+</view>

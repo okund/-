@@ -1,0 +1,83 @@
+<view class="page-container">
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <block wx:if="{{!loading && student}}">
+    <!-- 学生基本信息 -->
+    <view class="card student-header">
+      <view class="student-avatar">
+        <image src="/images/default_avatar.png" mode="aspectFill" class="avatar-img"></image>
+      </view>
+      <view class="student-info">
+        <text class="student-name">{{student.name}}</text>
+        <text class="student-id-label">{{student.studentId}}</text>
+        <text class="student-college">{{student.college}} · {{student.major}}</text>
+      </view>
+    </view>
+
+    <!-- 统计 -->
+    <view class="stats-row" wx:if="{{stats}}">
+      <view class="card stat-item">
+        <text class="stat-num">{{stats.classTotal}}</text>
+        <text class="stat-label">上课签到</text>
+      </view>
+      <view class="card stat-item">
+        <text class="stat-num">{{stats.dormTotal}}</text>
+        <text class="stat-label">查寝打卡</text>
+      </view>
+      <view class="card stat-item">
+        <text class="stat-num">{{stats.streakDays}}</text>
+        <text class="stat-label">连续天数</text>
+      </view>
+    </view>
+
+    <!-- 今日状态 -->
+    <view class="section-title"><text>今日上课签到</text></view>
+    <view wx:if="{{todayClasses.length === 0}}" class="empty-row">
+      <text>今日暂无上课记录</text>
+    </view>
+    <view class="card checkin-item" wx:for="{{todayClasses}}" wx:key="id">
+      <view class="checkin-status {{item.status === 'present' ? 'status-present' : (item.status === 'late' ? 'status-late' : 'status-absent')}}">
+        {{item.status === 'present' ? '已签到' : (item.status === 'late' ? '迟到' : '旷课')}}
+      </view>
+      <view class="checkin-meta">
+        <text>课程ID: {{item.courseId}}</text>
+        <text>时间: {{item.checkinTime}}</text>
+      </view>
+    </view>
+
+    <view class="section-title"><text>今日查寝打卡</text></view>
+    <view wx:if="{{!todayDorm}}" class="empty-row">
+      <text>今日暂未查寝打卡</text>
+    </view>
+    <view class="card checkin-item" wx:if="{{todayDorm}}">
+      <view class="checkin-status {{todayDorm.status === 'normal' ? 'status-present' : 'status-late'}}">
+        {{todayDorm.status === 'normal' ? '已打卡' : '晚归'}}
+      </view>
+      <view class="checkin-meta">
+        <text>时间: {{todayDorm.checkinTime}}</text>
+        <text>位置: {{todayDorm.locationAddr || '未知'}}</text>
+      </view>
+    </view>
+
+    <!-- 近期记录 -->
+    <view class="section-title"><text>近期上课记录</text></view>
+    <view class="card record-item" wx:for="{{recentClassRecords}}" wx:key="id">
+      <text class="record-date">{{item.date}}</text>
+      <text class="record-status {{item.status === 'present' ? 'text-success' : (item.status === 'late' ? 'text-warning' : 'text-danger')}}">
+        {{item.status === 'present' ? '正常' : (item.status === 'late' ? '迟到' : '旷课')}}
+      </text>
+      <text class="record-time">{{item.checkinTime ? item.checkinTime.substring(11, 19) : ''}}</text>
+    </view>
+
+    <view class="section-title"><text>近期查寝记录</text></view>
+    <view class="card record-item" wx:for="{{recentDormRecords}}" wx:key="id">
+      <text class="record-date">{{item.date}}</text>
+      <text class="record-status {{item.status === 'normal' ? 'text-success' : 'text-warning'}}">
+        {{item.status === 'normal' ? '正常' : '晚归'}}
+      </text>
+      <text class="record-time">{{item.checkinTime ? item.checkinTime.substring(11, 19) : ''}}</text>
+    </view>
+  </block>
+</view>

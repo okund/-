@@ -1,0 +1,88 @@
+.page-container {
+  padding: 30rpx;
+}
+.page-header {
+  margin-bottom: 30rpx;
+}
+.page-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2C3E50;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+.stat-card {
+  padding: 30rpx;
+  text-align: center;
+  border-left: 4rpx solid #3498DB;
+}
+.stat-big {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #2C3E50;
+}
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+.section-title {
+  margin: 30rpx 0 20rpx;
+}
+.section-title-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2C3E50;
+}
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+.feature-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+}
+.feature-icon-wrap {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+.feature-icon {
+  font-size: 36rpx;
+}
+.feature-info {
+  flex: 1;
+}
+.feature-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2C3E50;
+}
+.feature-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+.feature-arrow {
+  font-size: 36rpx;
+  color: #ccc;
+}
+.feature-hover {
+  opacity: 0.8;
+}
+.stat-hover {
+  opacity: 0.7;
+}

@@ -1,0 +1,148 @@
+.page-container {
+  padding: 30rpx;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  margin-bottom: 20rpx;
+}
+.search-icon {
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+}
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  flex: 1;
+  min-width: 0;
+}
+.toolbar-text {
+  font-size: 24rpx;
+  color: #999;
+}
+.toolbar-btn {
+  font-size: 24rpx;
+  color: #3498DB;
+  flex-shrink: 0;
+}
+.filter-tip {
+  font-size: 22rpx;
+  color: #E74C3C;
+  background: #FFEBEE;
+  padding: 6rpx 18rpx;
+  border-radius: 20rpx;
+}
+.filter-tip:active {
+  opacity: 0.7;
+}
+.loading, .empty {
+  text-align: center;
+  padding: 80rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+.student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+.student-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+}
+.student-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+.student-avatar image {
+  width: 100%;
+  height: 100%;
+}
+.student-info {
+  flex: 1;
+  min-width: 0;
+}
+.student-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12rpx;
+  margin-bottom: 6rpx;
+}
+.student-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2C3E50;
+}
+.student-id {
+  font-size: 22rpx;
+  color: #999;
+}
+.student-class {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 10rpx;
+}
+.student-tags {
+  display: flex;
+  gap: 12rpx;
+}
+.student-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20rpx;
+  flex-shrink: 0;
+}
+.stats-num {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #2C3E50;
+}
+.stats-label {
+  font-size: 20rpx;
+  color: #999;
+}
+.tag-success {
+  background: #E8F5E9;
+  color: #00B894;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+.tag-warning {
+  background: #FFF3E0;
+  color: #F39C12;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+.tag-default {
+  background: #F5F5F5;
+  color: #999;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+.feature-hover {
+  opacity: 0.8;
+}

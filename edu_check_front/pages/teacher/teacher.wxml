@@ -1,0 +1,28 @@
+<view class="page-container">
+  <view class="page-header">
+    <text class="page-title">📊 今日打卡概览</text>
+  </view>
+
+  <view class="stats-grid">
+    <view class="card stat-card" bindtap="goStudents" data-filter="" hover-class="stat-hover">
+      <text class="stat-big">{{summary.totalStudents}}</text>
+      <text class="stat-label">总学生数</text>
+    </view>
+    <view class="card stat-card" style="border-left: 4rpx solid #00B894;" bindtap="goStudents" data-filter="class_checked" hover-class="stat-hover">
+      <text class="stat-big" style="color: #00B894;">{{summary.classChecked}}</text>
+      <text class="stat-label">已上课签到</text>
+    </view>
+    <view class="card stat-card" style="border-left: 4rpx solid #E74C3C;" bindtap="goStudents" data-filter="class_not" hover-class="stat-hover">
+      <text class="stat-big" style="color: #E74C3C;">{{summary.classNotChecked}}</text>
+      <text class="stat-label">未上课签到</text>
+    </view>
+    <view class="card stat-card" style="border-left: 4rpx solid #00B894;" bindtap="goStudents" data-filter="dorm_checked" hover-class="stat-hover">
+      <text class="stat-big" style="color: #00B894;">{{summary.dormChecked}}</text>
+      <text class="stat-label">已查寝打卡</text>
+    </view>
+    <view class="card stat-card" style="border-left: 4rpx solid #E74C3C;" bindtap="goStudents" data-filter="dorm_not" hover-class="stat-hover">
+      <text class="stat-big" style="color: #E74C3C;">{{summary.dormNotChecked}}</text>
+      <text class="stat-label">未查寝打卡</text>
+    </view>
+  </view>
+</view>

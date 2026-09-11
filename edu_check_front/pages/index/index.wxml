@@ -1,0 +1,168 @@
+<view class="page-container">
+  <!-- 用户信息头部 -->
+  <view class="header-card">
+    <view class="header-bg"></view>
+    <view class="header-content">
+      <view class="avatar">
+        <image src="/images/default_avatar.png" mode="aspectFill" class="avatar-img"></image>
+      </view>
+      <view class="header-info">
+        <text class="user-name">{{userInfo.name}}</text>
+        <text class="user-desc">{{userInfo.college}}</text>
+      </view>
+      <view class="header-badge">
+        <text class="badge-text">
+          <text wx:if="{{role === 'teacher'}}">教师账号</text>
+          <text wx:else>已连续打卡 {{stats.streakDays}} 天</text>
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 离线提示 -->
+  <view class="offline-banner" wx:if="{{!connected}}">
+    <text>⚠️ 未连接到后端服务器，部分数据可能不可用</text>
+  </view>
+
+  <!-- 轮播图 -->
+  <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}" circular="{{true}}" indicator-color="rgba(255,255,255,0.4)" indicator-active-color="#ffffff">
+    <swiper-item wx:for="{{banners}}" wx:key="index">
+      <image src="{{item.src}}" mode="aspectFill" class="banner-img"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- ===== 学生视图 ===== -->
+  <block wx:if="{{role !== 'teacher'}}">
+    <!-- 统计卡片 -->
+    <view class="stats-row">
+      <view class="stat-item card" bindtap="goDormHistory">
+        <view class="stat-icon stat-icon-dorm">
+          <text>🏠</text>
+        </view>
+        <text class="stat-num">{{stats.dormTotal}}</text>
+        <text class="stat-label">查寝打卡</text>
+      </view>
+      <view class="stat-item card" bindtap="goClassHistory">
+        <view class="stat-icon stat-icon-class">
+          <text>📚</text>
+        </view>
+        <text class="stat-num">{{stats.classTotal}}</text>
+        <text class="stat-label">上课打卡</text>
+      </view>
+      <view class="stat-item card" bindtap="goInternHistory">
+        <view class="stat-icon stat-icon-intern">
+          <text>💼</text>
+        </view>
+        <text class="stat-num">{{stats.internTotal}}</text>
+        <text class="stat-label">实习打卡</text>
+      </view>
+    </view>
+
+    <!-- 功能入口 -->
+    <view class="section-title">
+      <text class="section-title-text">核心功能</text>
+    </view>
+
+    <view class="feature-list">
+      <view class="feature-card card" bindtap="goDormCheckin" hover-class="feature-hover">
+        <view class="feature-icon-wrap feature-dorm-bg">
+          <text class="feature-icon">🏠</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">查寝打卡</text>
+          <view class="feature-tags">
+            <text class="tag tag-primary">定位</text>
+            <text class="tag tag-danger">人脸识别</text>
+          </view>
+        </view>
+        <view class="feature-arrow">›</view>
+      </view>
+
+      <view class="feature-card card" bindtap="goClassCheckin" hover-class="feature-hover">
+        <view class="feature-icon-wrap feature-class-bg">
+          <text class="feature-icon">📚</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">上课打卡</text>
+          <view class="feature-tags">
+            <text class="tag tag-primary">限时定位</text>
+            <text class="tag tag-warning">动态码</text>
+          </view>
+        </view>
+        <view class="feature-arrow">›</view>
+      </view>
+
+      <view class="feature-card card" bindtap="goInternCheckin" hover-class="feature-hover">
+        <view class="feature-icon-wrap feature-intern-bg">
+          <text class="feature-icon">💼</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">实习打卡</text>
+          <view class="feature-tags">
+            <text class="tag tag-primary">定位签到</text>
+            <text class="tag tag-success">日志上报</text>
+          </view>
+        </view>
+        <view class="feature-arrow">›</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- ===== 教师视图 ===== -->
+  <block wx:if="{{role === 'teacher'}}">
+    <view class="section-title">
+      <text class="section-title-text">📊 教师工作台</text>
+    </view>
+
+    <view class="feature-list">
+      <view class="feature-card card" bindtap="goStudents" hover-class="feature-hover">
+        <view class="feature-icon-wrap" style="background: #E8F4FD;">
+          <text class="feature-icon">👥</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">学生管理</text>
+        </view>
+        <view class="feature-arrow">›</view>
+      </view>
+
+      <view class="feature-card card" bindtap="goLeaveApprove" hover-class="feature-hover">
+        <view class="feature-icon-wrap" style="background: #FFF3E0;">
+          <text class="feature-icon">📝</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">请假审批</text>
+        </view>
+        <view class="feature-arrow">›</view>
+      </view>
+
+      <view class="feature-card card" bindtap="goDynamicCode" hover-class="feature-hover">
+        <view class="feature-icon-wrap" style="background: #F3E5F5;">
+          <text class="feature-icon">🔑</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">动态码管理</text>
+          <text class="feature-desc-text">生成签到动态码</text>
+        </view>
+        <view class="feature-arrow">›</view>
+      </view>
+
+      <view class="feature-card card" bindtap="goTeacherPanel" hover-class="feature-hover">
+        <view class="feature-icon-wrap" style="background: #E8F5E9;">
+          <text class="feature-icon">📊</text>
+        </view>
+        <view class="feature-info">
+          <text class="feature-title">数据概览</text>
+        </view>
+        <view class="feature-arrow">›</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 每日思政 -->
+  <view class="card daily-thought">
+    <view class="daily-header">
+      <text class="daily-title">📖 每日思政</text>
+    </view>
+    <text class="daily-content">"广大青年要坚定不移听党话、跟党走，怀抱梦想又脚踏实地，敢想敢为又善作善成，立志做有理想、敢担当、能吃苦、肯奋斗的新时代好青年。"</text>
+  </view>
+</view>

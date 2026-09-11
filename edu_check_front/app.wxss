@@ -1,0 +1,168 @@
+/* 校园考勤助手 - 全局样式 */
+
+Page {
+  background-color: #F5F7FA;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #2C3E50;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+/* 全局重置 */
+view, text, image, button, input, textarea {
+  box-sizing: border-box;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  line-height: inherit;
+}
+
+button::after {
+  border: none;
+}
+
+/* 通用按钮样式 - 使用 !important 修复微信小程序 button 组件背景色被原生样式覆盖的问题 */
+.btn-primary {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 88rpx !important;
+  background: #C0392B !important;
+  border-radius: 44rpx !important;
+  color: #fff !important;
+  font-size: 32rpx !important;
+  font-weight: 600 !important;
+  letter-spacing: 2rpx !important;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* 修复已打卡状态下按钮仍可点击的问题 */
+.btn-primary[disabled] {
+  opacity: 1 !important;
+}
+
+.btn-primary.btn-disabled {
+  background: #ccc !important;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 88rpx;
+  background: #fff;
+  border: 2rpx solid #E74C3C;
+  border-radius: 44rpx;
+  color: #E74C3C;
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+}
+
+.btn-secondary:active {
+  background: #FFF5F5;
+}
+
+/* 卡片通用样式 */
+.card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.04);
+}
+
+/* 页面容器 */
+.page-container {
+  padding: 30rpx;
+  padding-bottom: 40rpx;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 8rpx;
+}
+
+/* 状态标签 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.tag-success {
+  background: #E8F8F5;
+  color: #00B894;
+}
+
+.tag-warning {
+  background: #FEF5E7;
+  color: #F39C12;
+}
+
+.tag-danger {
+  background: #FDEDEC;
+  color: #E74C3C;
+}
+
+.tag-primary {
+  background: #EBF0FA;
+  color: #3498DB;
+}
+
+/* Flex布局工具 */
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 分割线 */
+.divider {
+  height: 2rpx;
+  background: #F0F0F0;
+  margin: 24rpx 0;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.empty-state text {
+  font-size: 28rpx;
+  color: #BDC3C7;
+  margin-top: 20rpx;
+}
